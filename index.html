@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Matrices</title>
+</head>
+
+<body>
+    <h1>Matrices</h1>
+    What do you want to find:
+    <select name="options" id="options">
+        <option value="determinant">Determinant</option>
+        <option value="eigen">Eigen Value & Vector</option>
+    </select>
+
+    <br><br>
+
+    <div id="matrix_div">
+        Enter matrix dimensions: <input type="number" id="dimension_a" style="width:3%" onchange="create_matrix()"
+            value="2"> * <input type="number" id="dimension_b" style="width:3%" onchange="create_matrix()" value="2">
+
+        <br><br>
+
+        <h3>Matrix:</h3>
+        <div id="matrix_body"></div>
+    </div>
+
+</body>
+<script>
+    document.getElementById("options").addEventListener("change", mode);
+
+    function mode() {
+        switch (document.getElementById("options").value) {
+            case "determinant":
+                determinant();
+                break;
+
+            case "eigen":
+                alert('Eigen still under development!');
+                break;
+            default:
+                alert("Not yet available");
+                break;
+        }
+    }
+
+    function create_matrix() {
+        if (document.getElementById("dimension_a").value == 0 || document.getElementById("dimension_a").value == '') {
+            document.getElementById("dimension_a").value = 1;
+        }
+
+        if (document.getElementById("dimension_b").value == 0 || document.getElementById("dimension_a").value == '') {
+            document.getElementById("dimension_b").value = 1;
+        }
+
+        let a = parseInt(document.getElementById("dimension_a").value);
+        let b = parseInt(document.getElementById("dimension_b").value);
+        let matrix_body = "";
+        let i = 1;
+
+        for (let row = 0; row < a; row++) {
+            //columns
+            matrix_body += "<br>";
+
+            for (let column = 0; column < b; column++) {
+                //rows
+                matrix_body += `<input type='number' id='td${i}' style='width:5%'>`
+                i++;
+            }
+        }
+
+        document.getElementById("matrix_body").innerHTML = matrix_body;
+    };
+    create_matrix();
+
+    function determinant() {
+
+    }
+</script>
+
+</html>
