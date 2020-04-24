@@ -47,7 +47,7 @@
         }
     }
 
-    function create_matrix() {
+    function CreateMatrix() {
         if (document.getElementById("dimension_a").value == 0 || document.getElementById("dimension_a").value == '') {
             document.getElementById("dimension_a").value = 1;
         }
@@ -74,10 +74,56 @@
 
         document.getElementById("matrix_body").innerHTML = matrix_body;
     };
-    create_matrix();
+    CreateMatrix();
 
-    function determinant() {
+    let Arr = [[7,5,2], [6,4,7], [3,1,6]];
+    let Arr1 = [[4,7], [1,6]];
+    let Arr2 = [[5,2], [1,6]];
+    let Arr3 = [[5,2], [4,7]];
 
+    alert(GetDeterminant(Arr));
+
+    function GetDeterminant(Matrix) {
+        if (Matrix.length == 2) {
+            return ((Matrix[0][0] * Matrix[1][1]) - (Matrix[0][1] * Matrix[1][0]));
+        }
+
+        let SubMatrices = [];
+
+        for (let i = 0; i < Matrix.length; i++) {
+            SubMatrices.push([Matrix[i][0], CreateSubMatrix(0, i, Matrix)]);
+        }
+        console.log(SubMatrices);
+
+        let Operation = "+";
+        let Determinant = 0;
+
+        SubMatrices.forEach(SubMatrix => {
+            if (Operation == "+") {
+                Determinant += (SubMatrix[0] * GetDeterminant(SubMatrix[1]));
+                Operation = "-";
+            } else {
+                Determinant -= (SubMatrix[0] * GetDeterminant(SubMatrix[1]));
+                Operation = "+";
+            }
+        });
+
+        return Determinant;
+    }
+
+    function CreateSubMatrix(row, col, Matrix) {
+        let SubMatrix = [];
+        Matrix.forEach(item => {
+            SubMatrix.push(item.slice());
+        });
+
+        SubMatrix.splice(col, 1); //remove a column
+
+        for (let i = 0; i < SubMatrix.length; i++) {
+            SubMatrix[i].splice(row, 1); //remove items in a row
+        }
+
+        return SubMatrix;
     }
 </script>
 
