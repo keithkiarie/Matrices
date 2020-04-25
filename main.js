@@ -15,7 +15,7 @@ function mode() {
     }
 }
 
-function CreateMatrix() {
+function CreateMatrixTable() {
     //can't be blank
     if (document.getElementById("dimension_a").value == 0 || document.getElementById("dimension_a").value == '') {
         document.getElementById("dimension_a").value = 1;
@@ -43,7 +43,7 @@ function CreateMatrix() {
 
     document.getElementById("matrix_body").innerHTML = matrix_body;
 };
-CreateMatrix();
+CreateMatrixTable();
 
 let Arr = [[7, 5, 2], [6, 4, 7], [3, 1, 6]];
 let Arr1 = [[4, 7], [1, 6]];
