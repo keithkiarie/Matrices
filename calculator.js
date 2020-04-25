@@ -39,8 +39,3 @@ function CreateSubMatrix(row, col, Matrix) {
 
     return SubMatrix;
 }
-
-//get data from DOM and make a multidimensional array
-function ProduceMatrix () {
-
-}
