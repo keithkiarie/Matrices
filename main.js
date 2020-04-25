@@ -1,20 +1,3 @@
-document.getElementById("options").addEventListener("change", mode);
-
-function mode() {
-    switch (document.getElementById("options").value) {
-        case "determinant":
-            determinant();
-            break;
-
-        case "eigen":
-            alert('Eigen still under development!');
-            break;
-        default:
-            alert("Not yet available");
-            break;
-    }
-}
-
 function CreateMatrixTable() {
     //can't be blank
     if (document.getElementById("dimension_a").value == 0 || document.getElementById("dimension_a").value == '') {
@@ -36,7 +19,8 @@ function CreateMatrixTable() {
 
         for (let column = 0; column < b; column++) {
             //rows
-            matrix_body += `<input type='number' id='td${i}' style='width:5%' value='0' onchange='InputChange()'>`;
+            matrix_body += `<input type='number' id='td${i}' style='width:5%' value='0' onchange='InputChange()'
+            oninput='InputChange()'>`;
             i++;
         }
     }
@@ -73,7 +57,7 @@ function InputChange() {
     let Matrix = ProduceMatrix();
     let Determinant = GetDeterminant(Matrix);
 
-    console.log(Determinant);
+    document.getElementById("AnswersDisplay").innerHTML = `Determinant: ${Determinant}`;
 }
 
 let Arr = [[7, 5, 2], [6, 4, 7], [3, 1, 6]];
