@@ -60,7 +60,9 @@ function ProduceMatrix() {
 
     for (let i = 0; i < DimensionA; i++) {
         for (let j = 0; j < DimensionA; j++) {
-            Matrix[i].push(parseInt(document.getElementById(`td${(j * DimensionA) + i}`).value));
+            let Value = document.getElementById(`td${(j * DimensionA) + i}`).value;
+            if (Value == "") Value = 0;
+            Matrix[i].push(parseInt(Value));
         }
     }
 
@@ -68,7 +70,10 @@ function ProduceMatrix() {
 }
 
 function InputChange() {
-    
+    let Matrix = ProduceMatrix();
+    let Determinant = GetDeterminant(Matrix);
+
+    console.log(Determinant);
 }
 
 let Arr = [[7, 5, 2], [6, 4, 7], [3, 1, 6]];
