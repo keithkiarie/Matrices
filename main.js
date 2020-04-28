@@ -65,7 +65,7 @@ function MatrixInHTML(Matrix) {
 
     let DIVBody = "<table><tr>";
     for (let i = 0; i < Matrix.length; i++) {
-        for (let j = 0; j < Matrix.length; j++) DIVBody += `<td>${Matrix[j][i]}</td>`;
+        for (let j = 0; j < Matrix.length; j++) DIVBody += `<td>${Matrix[j][i].toFixed(2)}</td>`;
         DIVBody += "</tr>";
     }
     DIVBody += "</table>";
