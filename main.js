@@ -1,15 +1,11 @@
 function CreateMatrixTable() {
     //can't be blank
-    if (document.getElementById("dimension_a").value == 0 || document.getElementById("dimension_a").value == '') {
-        document.getElementById("dimension_a").value = 1;
-    }
-
-    if (document.getElementById("dimension_b").value == 0 || document.getElementById("dimension_a").value == '') {
-        document.getElementById("dimension_b").value = 1;
+    if (document.getElementById("dimension_a").value < 2 || document.getElementById("dimension_a").value == '') {
+        document.getElementById("dimension_a").value = 2;
     }
 
     let a = parseInt(document.getElementById("dimension_a").value);
-    let b = parseInt(document.getElementById("dimension_b").value);
+    let b = a;
     let matrix_body = "";
     let i = 0;
 
@@ -33,9 +29,8 @@ CreateMatrixTable();
 function ProduceMatrix() {
 
     let DimensionA = document.getElementById('dimension_a').value;
-    let DimensionB = document.getElementById('dimension_b').value;
 
-    if (DimensionA != DimensionB) return [];
+    if (DimensionA < 2) return [];
 
     let Matrix = [];
     for (let i = 0; i < DimensionA; i++) {
