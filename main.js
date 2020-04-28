@@ -55,12 +55,20 @@ function ProduceMatrix() {
 
 function InputChange() {
     let Matrix = ProduceMatrix();
-    let Determinant = GetDeterminant(Matrix);
 
-    document.getElementById("AnswersDisplay").innerHTML = `Determinant: ${Determinant}`;
+    document.getElementById("DeterminantDisplay").innerHTML = `<b>Determinant</b>: ${GetDeterminant(Matrix)}`;
+
+    document.getElementById("InverseDisplay").innerHTML = `<b>Matrix</b>: ${MatrixInHTML(GetInverse(Matrix))}`;
+
 }
 
-let Arr = [[7, 5, 2], [6, 4, 7], [3, 1, 6]];
-let Arr1 = [[4, 7], [1, 6]];
-let Arr2 = [[5, 2], [1, 6]];
-let Arr3 = [[5, 2], [4, 7]];
+function MatrixInHTML(Matrix) {
+
+    let DIVBody = "<table><tr>";
+    for (let i = 0; i < Matrix.length; i++) {
+        for (let j = 0; j < Matrix.length; j++) DIVBody += `<td>${Matrix[j][i]}</td>`;
+        DIVBody += "</tr>";
+    }
+    DIVBody += "</table>";
+    return DIVBody;
+}
