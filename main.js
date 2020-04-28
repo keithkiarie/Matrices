@@ -53,11 +53,15 @@ function InputChange() {
 
     document.getElementById("DeterminantDisplay").innerHTML = `<b>Determinant</b>: ${GetDeterminant(Matrix)}`;
 
-    document.getElementById("InverseDisplay").innerHTML = `<b>Matrix</b>: ${MatrixInHTML(GetInverse(Matrix))}`;
+    document.getElementById("InverseDisplay").innerHTML = `<b>Inverse</b>: ${MatrixInHTML(GetInverse(Matrix))}`;
 
 }
 
 function MatrixInHTML(Matrix) {
+
+    for (let i = 0; i < Matrix.length; i++) {
+        for (let j = 0; j < Matrix.length; j++) if (Matrix[i][j] == Infinity || isNaN(Matrix[i][j])) return "Not Available.";
+    }
 
     let DIVBody = "<table><tr>";
     for (let i = 0; i < Matrix.length; i++) {
